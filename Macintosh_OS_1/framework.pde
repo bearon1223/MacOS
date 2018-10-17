@@ -11,19 +11,25 @@ void startup() {
 void backgrounds(float wbg) {
   float whichbg = floor(wbg);
   if (whichbg == 1) {
-    background(255);
+    background(255, 255, 255);
   }
   if (whichbg == 2) {
-    background(0, 255, 0);
+    background(100, 255, 100);
   }
   if (whichbg == 3) {
-    background(255, 0, 0);
+    background(255, 100, 100);
   }
   if (whichbg == 4) {
-    background(0, 0, 255);
+    background(100, 100, 255);
   }
   if (whichbg == 5) {
-    background(255, 0, 255);
+    background(255, 100, 255);
+  }
+  if (whichbg == 6) {
+    background(100, 255, 255);
+  }
+  if (whichbg == 7) {
+    background(255, 255, 100);
   }
 }
 
@@ -63,7 +69,6 @@ void bar() {
   rect(0, 0, width, 20);
 }
 
-float type = 1;
 window settings = new window(200, 200, 0, isSettingsOpen);
 
 void macOS() {

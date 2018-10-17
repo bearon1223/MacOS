@@ -62,16 +62,34 @@ class window {
         } else if (ws == 1) {
           fill(255, 100, 100);
           rect(x + 10, y + 60, 20, 20);
+          if(isMouseInside(x + 10, y + 60, 20, 20) && mousePressed){
+            type = 3;
+          }
           fill(100, 255, 100);
           rect(x + 40, y + 60, 20, 20);
+          if(isMouseInside(x + 40, y + 60, 20, 20) && mousePressed){
+            type = 2;
+          }
           fill(100, 100, 255);
           rect(x + 70, y + 60, 20, 20);
+          if(isMouseInside(x + 70, y + 60, 20, 20) && mousePressed){
+            type = 4;
+          }
           fill(255, 100, 255);
           rect(x + 100, y + 60, 20, 20);
+          if(isMouseInside(x + 100, y + 60, 20, 20) && mousePressed){
+            type = 5;
+          }
           fill(100, 255, 255);
           rect(x + 130, y + 60, 20, 20);
+          if(isMouseInside(x + 130, y + 60, 20, 20) && mousePressed){
+            type = 6;
+          }
           fill(255, 255, 100);
           rect(x + 160, y + 60, 20, 20);
+          if(isMouseInside(x + 160, y + 60, 20, 20) && mousePressed){
+            type = 7;
+          }
         }
       }
     }

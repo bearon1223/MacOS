@@ -1,4 +1,5 @@
 PImage appleW;
+float type = 1;
 float mx = 0;
 float my = 0;
 float pmx = 0;
