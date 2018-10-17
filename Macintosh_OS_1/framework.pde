@@ -1,12 +1,14 @@
-float startup_timer = 0; 
-float time_to_load = random(500, 1020);
+float startup_timer = 0, shutdown_timer = 0; 
+float time_to_load = random(500, 1020), time_to_shutdown = random(500, 1020);
 //float time_to_load = 1;
-boolean dropopen = false, isSettingsOpen = false;
+boolean dropopen = false, isSettingsOpen = false, shuttingdown = false;
 
 void startup() {
   background(0);
   image(appleW, (width/2) - (100*1.7777777) / 2, height / 2 - 50, 100*1.7777777, 100);
 }
+
+
 
 void backgrounds(float wbg) {
   float whichbg = floor(wbg);
@@ -48,12 +50,12 @@ void appleBarLogo(float x, float y, float sx) {
   color c = 200;
   if ((mx > x - sx * 2 && mx < x + sx * 2 && my > y - sy * 2 && my < y + sy && mousePressed) || dropopen) {
     c = color(100, 150, 255);
-    isSettingsOpen = true;
+    //isSettingsOpen = true;
     dropopen = true;
   } else {
     c = 200;
   }
-  if(!(mx > x - sx * 2 && mx < x + sx * 2 && my > y - sy * 2 && my < y + sy) && mousePressed){
+  if(!(mx > x - sx * 2 && mx < x + sx * 2 +100 && my > y - sy * 2 && my < y + sy + 300) && mousePressed){
     dropopen = false;
   }
   fill(c);
@@ -70,12 +72,16 @@ void bar() {
 }
 
 window settings = new window(200, 200, 0, isSettingsOpen);
+dropmenu appled = new dropmenu(0, 20, 0);
 
 void macOS() {
   if (startup_timer < time_to_load) {
     startup();
     startup_timer++;
-  } else {
+  } else if(shuttingdown && shutdown_timer < time_to_shutdown){
+    startup();
+    shutdown_timer++;
+  } else if(!shuttingdown){
     noStroke();
     backgrounds(type);
     bar();
@@ -83,7 +89,10 @@ void macOS() {
     appleBarLogo(20, 10, 10);
     settings.render();
     settings.mousemovement();
+    appled.render();
     macCursor();
     //type += 0.01;
+  } else {
+    exit();
   }
 }

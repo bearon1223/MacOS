@@ -8,7 +8,7 @@ float pmy = 0;
 void setup(){
   size(1000, 1000);
   appleW = loadImage("white apple logo.jpg");
-  surface.setTitle("macOS 1");
+  surface.setTitle("macOS me");
 }
 
 void draw(){
