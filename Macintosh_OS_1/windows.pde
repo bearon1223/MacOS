@@ -10,16 +10,18 @@ boolean isMouseInside(float x, float y, float w, float h) {
 
 class window {
   float x, y, wt, w, ws;
-  boolean io;
+  boolean ioset, ioapp, ioflap = false;
   window(float startingx, float startingy, float windowType, boolean isOpen) {
     x = startingx;
     y = startingy;
     wt = windowType;
-    io = isOpen;
-    ws = 0;
-    if (windowType == 0) {
-      w = 400;
+    ioset = false;
+    ioapp = false;
+    boolean f_in_the_chat = isOpen;
+    if (f_in_the_chat) {
     }
+    ws = 0;
+    w = 400;
   }
 
   void icon() {
@@ -43,8 +45,10 @@ class window {
   }
 
   void render() {
-    io = isSettingsOpen;
-    if (io) {
+    ioset = isSettingsOpen;
+    ioapp = isAppstoreOpen;
+    ioflap = flappyOpen;
+    if (ioset) {
       if (wt == 0) {
         fill(230);
         rect(x, y, w, 300);
@@ -62,35 +66,60 @@ class window {
         } else if (ws == 1) {
           fill(255, 100, 100);
           rect(x + 10, y + 60, 20, 20);
-          if(isMouseInside(x + 10, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 10, y + 60, 20, 20) && mousePressed) {
             type = 3;
           }
           fill(100, 255, 100);
           rect(x + 40, y + 60, 20, 20);
-          if(isMouseInside(x + 40, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 40, y + 60, 20, 20) && mousePressed) {
             type = 2;
           }
           fill(100, 100, 255);
           rect(x + 70, y + 60, 20, 20);
-          if(isMouseInside(x + 70, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 70, y + 60, 20, 20) && mousePressed) {
             type = 4;
           }
           fill(255, 100, 255);
           rect(x + 100, y + 60, 20, 20);
-          if(isMouseInside(x + 100, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 100, y + 60, 20, 20) && mousePressed) {
             type = 5;
           }
           fill(100, 255, 255);
           rect(x + 130, y + 60, 20, 20);
-          if(isMouseInside(x + 130, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 130, y + 60, 20, 20) && mousePressed) {
             type = 6;
           }
           fill(255, 255, 100);
           rect(x + 160, y + 60, 20, 20);
-          if(isMouseInside(x + 160, y + 60, 20, 20) && mousePressed){
+          if (isMouseInside(x + 160, y + 60, 20, 20) && mousePressed) {
             type = 7;
           }
         }
+      }
+    } else if (ioapp && wt == 1) {
+      fill(230);
+      rect(x, y, w, 300);
+      fill(200);
+      rect(x, y, w, 20);
+      fill(255, 50, 50);
+      ellipse(x + 10, y + 10, 8, 8);
+      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
+        isAppstoreOpen = false;
+      }
+      rect(x + 30, y + 20, 20, 20);
+      if (isMouseInside(x + 30, y + 20, 20, 20) && wt == 1 && mousePressed) {
+        hasFlappy = true;
+      }
+    } else if(ioflap && wt == 2){
+      w = 700;
+      fill(230);
+      rect(x, y, w, 600);
+      fill(200);
+      rect(x, y, w, 20);
+      fill(255, 50, 50);
+      ellipse(x + 10, y + 10, 8, 8);
+      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
+        flappyOpen = false;
       }
     }
   }

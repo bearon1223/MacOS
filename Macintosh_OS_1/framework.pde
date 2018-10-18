@@ -1,7 +1,7 @@
 float startup_timer = 0, shutdown_timer = 0; 
 float time_to_load = random(500, 1020), time_to_shutdown = random(500, 1020);
 //float time_to_load = 1;
-boolean dropopen = false, isSettingsOpen = false, shuttingdown = false;
+boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false;
 
 void startup() {
   background(0);
@@ -55,7 +55,7 @@ void appleBarLogo(float x, float y, float sx) {
   } else {
     c = 200;
   }
-  if(!(mx > x - sx * 2 && mx < x + sx * 2 +100 && my > y - sy * 2 && my < y + sy + 300) && mousePressed){
+  if (!(mx > x - sx * 2 && mx < x + sx * 2 +100 && my > y - sy * 2 && my < y + sy + 300) && mousePressed) {
     dropopen = false;
   }
   fill(c);
@@ -67,21 +67,47 @@ void appleBarLogo(float x, float y, float sx) {
 }
 
 void bar() {
+  float hours;
+  String minutes;
+  String seconds;
+  if (hour() > 12) {
+    hours = hour() - 12;
+  } else {
+    hours = hour();
+  }
+  if (second() < 10) {
+    seconds = "0" + str(second());
+  } else {
+    seconds = str(second());
+  }
+  if (minute() < 10) {
+    minutes = "0" + str(minute());
+  } else {
+    minutes = str(minute());
+  }
   fill(200);
   rect(0, 0, width, 20);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text(floor(hours) + ":" + minutes + ":" + seconds, 950, 10);
 }
 
+boolean chosen = false;
+
 window settings = new window(200, 200, 0, isSettingsOpen);
+window appstore = new window(200, 200, 1, isAppstoreOpen);
+window flappy = new window(200, 200, 2, flappyOpen);
 dropmenu appled = new dropmenu(0, 20, 0);
+textFeild tlog_in = new textFeild(550, 700, 100, 10);
 
 void macOS() {
   if (startup_timer < time_to_load) {
     startup();
     startup_timer++;
-  } else if(shuttingdown && shutdown_timer < time_to_shutdown){
+  } else if (shuttingdown && shutdown_timer < time_to_shutdown) {
     startup();
     shutdown_timer++;
-  } else if(!shuttingdown){
+  } else if (!shuttingdown && !loggedout) {
     noStroke();
     backgrounds(type);
     bar();
@@ -89,9 +115,31 @@ void macOS() {
     appleBarLogo(20, 10, 10);
     settings.render();
     settings.mousemovement();
+    appstore.render();
+    appstore.mousemovement();
+    flappy.render();
+    flappy.mousemovement();
     appled.render();
+    if (hasFlappy) {
+      if (isMouseInside(900, 30, 50, 50) && mousePressed) {
+        flappyOpen = true;
+      }
+      stroke(0);
+      fill(255, 255, 100);
+      rect(900, 30, 50, 50);
+    }
     macCursor();
-    //type += 0.01;
+    chosen = false;
+  } else if (loggedout) {
+    backgrounds(type);
+    ellipse(500, 500, 100, 100);
+    if (isMouseInside(450, 450, 100, 100) && mousePressed) {
+      chosen = true;
+    }
+    if ((key == ENTER || key == RETURN) && chosen && keyPressed) {
+      loggedout = false;
+    }
+    macCursor();
   } else {
     exit();
   }
