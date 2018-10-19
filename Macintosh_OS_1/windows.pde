@@ -112,7 +112,7 @@ class window {
       }
     } else if(ioflap && wt == 2){
       w = 700;
-      fill(230);
+      fill(0, 187, 255);
       rect(x, y, w, 600);
       fill(200);
       rect(x, y, w, 20);

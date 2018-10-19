@@ -16,6 +16,9 @@ void scenes(window f) {
 }
 
 void obstical(window f) {
+  float windowx = birdxb + f.x;
+  float windowy = (birdyb + f.y + 20);
+  
 }
 
 void bird(window f) {
