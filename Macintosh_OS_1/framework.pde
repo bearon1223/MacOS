@@ -1,5 +1,7 @@
 float startup_timer = 0, shutdown_timer = 0; 
 float time_to_load = random(500, 1020), time_to_shutdown = random(500, 1020);
+float startx = 0;
+float starty = 0;
 //float time_to_load = 1;
 boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false;
 
@@ -127,7 +129,19 @@ void macOS() {
       stroke(0);
       fill(255, 255, 100);
       rect(900, 30, 50, 50);
+      if(flappyOpen){
+        flappyBirdGame(flappy);
+      }
     }
+    
+      if (isMouseInside(900, 100, 50, 50) && mousePressed) {
+        isSettingsOpen = true;
+      }
+      stroke(0);
+      fill(159);
+      rect(900, 100, 50, 50);
+      fill(255);
+      ellipse(925, 125, 40, 40);
     macCursor();
     chosen = false;
   } else if (loggedout) {
