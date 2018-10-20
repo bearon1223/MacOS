@@ -50,6 +50,8 @@ class window {
     ioflap = flappyOpen;
     if (ioset) {
       if (wt == 0) {
+        isAppstoreOpen = false;
+        flappyOpen = false;
         fill(230);
         rect(x, y, w, 300);
         fill(200);
@@ -94,9 +96,37 @@ class window {
           if (isMouseInside(x + 160, y + 60, 20, 20) && mousePressed) {
             type = 7;
           }
+          //
+          fill(255, 0, 0);
+          rect(x + 190, y + 60, 20, 20);
+          if (isMouseInside(x + 190, y + 60, 20, 20) && mousePressed) {
+            type = 8;
+          }
+          fill(0, 255, 0);
+          rect(x + 220, y + 60, 20, 20);
+          if (isMouseInside(x + 220, y + 60, 20, 20) && mousePressed) {
+            type = 9;
+          }
+          fill(0, 0, 255);
+          rect(x + 250, y + 60, 20, 20);
+          if (isMouseInside(x + 250, y + 60, 20, 20) && mousePressed) {
+            type = 10;
+          }
+          fill(0);
+          rect(x + 280, y + 60, 20, 20);
+          if (isMouseInside(x + 280, y + 60, 20, 20) && mousePressed) {
+            type = 11;
+          }
+          fill(255);
+          rect(x + 310, y + 60, 20, 20);
+          if (isMouseInside(x + 310, y + 60, 20, 20) && mousePressed) {
+            type = 12;
+          }
         }
       }
     } else if (ioapp && wt == 1) {
+      isSettingsOpen = false;
+      flappyOpen = false;
       fill(230);
       rect(x, y, w, 300);
       fill(200);
@@ -111,6 +141,8 @@ class window {
         hasFlappy = true;
       }
     } else if(ioflap && wt == 2){
+      isAppstoreOpen = false;
+      isSettingsOpen = false;
       w = 700;
       fill(0, 187, 255);
       rect(x, y, w, 600);

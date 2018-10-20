@@ -35,6 +35,21 @@ void backgrounds(float wbg) {
   if (whichbg == 7) {
     background(255, 255, 100);
   }
+  if(whichbg == 8){
+    background(255, 0, 0);
+  }
+  if(whichbg == 9){
+    background(0, 255, 0);
+  }
+  if(whichbg == 10){
+    background(0, 0, 255);
+  }
+  if(whichbg == 11){
+    background(0);
+  }
+  if(whichbg == 12){
+    background(255);
+  }
 }
 
 void macCursor() {
@@ -67,15 +82,17 @@ void appleBarLogo(float x, float y, float sx) {
   fill(c);
   ellipse(x + sx / 2, y, sx/2, sy/2);
 }
-
+String AMPM = "AM";
 void bar() {
   float hours;
   String minutes;
   String seconds;
   if (hour() > 12) {
     hours = hour() - 12;
+    AMPM = "PM";
   } else {
     hours = hour();
+    AMPM = "PM";
   }
   if (second() < 10) {
     seconds = "0" + str(second());
@@ -91,7 +108,7 @@ void bar() {
   rect(0, 0, width, 20);
   textAlign(CENTER, CENTER);
   fill(0);
-  text(floor(hours) + ":" + minutes + ":" + seconds, 950, 10);
+  text(floor(hours) + ":" + minutes + ":" + seconds + " " + AMPM, 940, 10);
 }
 
 boolean chosen = false;

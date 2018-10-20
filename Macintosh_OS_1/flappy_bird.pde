@@ -5,6 +5,7 @@ boolean setup = false;
 float birdx;
 float birdy;
 float y;
+float pipex = 700;
 
 void flappyBirdGame(window window) {
   scenes(window);
@@ -16,9 +17,14 @@ void scenes(window f) {
 }
 
 void obstical(window f) {
-  float windowx = birdxb + f.x;
-  float windowy = (birdyb + f.y + 20);
-  
+  float windowx = pipex + f.x;
+  float windowy = f.y + 20;
+  rect(windowx -11, windowy + 1, 10, 570);
+  if(pipex < 10) {
+    pipex = 700;
+  } else {
+    pipex--;
+  }
 }
 
 void bird(window f) {
@@ -35,7 +41,7 @@ void bird(window f) {
     if (keyPressed && g > 0.1) {
       g = -5;
     }
-    if (birdy < windowy + 450) {
+    if (birdy < f.y + 570) {
       g += 0.25;
     } else {
       g = -2;
