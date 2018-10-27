@@ -164,7 +164,7 @@ void macOS() {
     rect(900, 100, 50, 50);
     fill(255);
     ellipse(925, 125, 40, 40);
-
+    noStroke();
     settings.render(isSettingsOpen);
     settings.mousemovement();
     appstore.render(isAppstoreOpen);
