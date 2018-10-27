@@ -3,7 +3,7 @@ float time_to_load = random(500, 1020), time_to_shutdown = random(500, 1020);
 float startx = 0;
 float starty = 0;
 //float time_to_load = 1;
-boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false;
+boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false, notesOpen = false, isPaintOpen = false;
 
 void startup() {
   background(0);
@@ -113,9 +113,10 @@ void bar() {
 
 boolean chosen = false;
 
-window settings = new window(200, 200, 0, isSettingsOpen);
-window appstore = new window(200, 200, 1, isAppstoreOpen);
+window settings = new window(200, 100, 0, isSettingsOpen);
+window appstore = new window(200, 150, 1, isAppstoreOpen);
 window flappy = new window(200, 200, 2, flappyOpen);
+window notes = new window(200, 250, 3, notesOpen);
 dropmenu appled = new dropmenu(0, 20, 0);
 textFeild tlog_in = new textFeild(550, 700, 100, 10);
 
@@ -132,12 +133,14 @@ void macOS() {
     bar();
     fill(0);
     appleBarLogo(20, 10, 10);
-    settings.render();
+    settings.render(isSettingsOpen);
     settings.mousemovement();
-    appstore.render();
+    appstore.render(isAppstoreOpen);
     appstore.mousemovement();
-    flappy.render();
+    flappy.render(flappyOpen);
     flappy.mousemovement();
+    notes.render(notesOpen);
+    notes.mousemovement();
     appled.render();
     if (hasFlappy) {
       if (isMouseInside(900, 30, 50, 50) && mousePressed) {
@@ -150,6 +153,16 @@ void macOS() {
         flappyBirdGame(flappy);
       }
     }
+    
+      if (isMouseInside(900, 170, 50, 50) && mousePressed) {
+        notesOpen = true;
+      }
+      stroke(0);
+      fill(89, 71, 0);
+      rect(900, 170, 50, 10);
+      fill(255, 255, 100);
+      rect(900, 180, 50, 40);
+      
     
       if (isMouseInside(900, 100, 50, 50) && mousePressed) {
         isSettingsOpen = true;

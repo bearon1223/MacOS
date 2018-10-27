@@ -7,14 +7,14 @@ float pmx = 0;
 float pmy = 0;
 static final String CONFIG_FILE = "config.dat";
 
-void setup(){
+void setup() {
   size(1000, 1000);
   appleW = loadImage("white apple logo.jpg");
   surface.setTitle("macOS me");
   load();
 }
 
-void save(){
+void save() {
   String[] lines = {
     str(type), str(hasFlappy)
   };
@@ -27,7 +27,7 @@ void load() {
   hasFlappy = boolean(lines[1]);
 }
 
-void draw(){
+void draw() {
   save();
   background(0);
   noCursor();

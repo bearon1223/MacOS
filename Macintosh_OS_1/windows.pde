@@ -10,7 +10,8 @@ boolean isMouseInside(float x, float y, float w, float h) {
 
 class window {
   float x, y, wt, w, ws;
-  boolean ioset, ioapp, ioflap = false;
+  boolean ioset, ioapp, ioflap = false, io = false;
+  boolean isPriority = false;
   window(float startingx, float startingy, float windowType, boolean isOpen) {
     x = startingx;
     y = startingy;
@@ -44,14 +45,10 @@ class window {
     }
   }
 
-  void render() {
-    ioset = isSettingsOpen;
-    ioapp = isAppstoreOpen;
-    ioflap = flappyOpen;
-    if (ioset) {
+  void render(boolean open) {
+    io = open;
+    if (io) {
       if (wt == 0) {
-        isAppstoreOpen = false;
-        flappyOpen = false;
         fill(230);
         rect(x, y, w, 300);
         fill(200);
@@ -124,9 +121,8 @@ class window {
           }
         }
       }
-    } else if (ioapp && wt == 1) {
-      isSettingsOpen = false;
-      flappyOpen = false;
+    } 
+    if (io && wt == 1) {
       fill(230);
       rect(x, y, w, 300);
       fill(200);
@@ -140,9 +136,8 @@ class window {
       if (isMouseInside(x + 30, y + 20, 20, 20) && wt == 1 && mousePressed) {
         hasFlappy = true;
       }
-    } else if(ioflap && wt == 2){
-      isAppstoreOpen = false;
-      isSettingsOpen = false;
+    }
+    if (io && wt == 2) {
       w = 700;
       fill(0, 187, 255);
       rect(x, y, w, 600);
@@ -154,5 +149,28 @@ class window {
         flappyOpen = false;
       }
     }
+    if (io && wt == 3) {
+      w = 300;
+      fill(230);
+      rect(x, y, w, 600);
+      fill(200);
+      rect(x, y, w, 20);
+      fill(255, 50, 50);
+      ellipse(x + 10, y + 10, 8, 8);
+      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
+        notesOpen = false;
+      }
+    }
+    if (io && wt == 4) {
+      w = 800
+      fill(230);
+      rect(x, y, w, 600);
+      fill(200); 
+      rect(x, y, w, 20);
+      fill(255, 50, 50); 
+      ellipse(x + 10, y + 10, 8, 8);
+      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
+        isPaintOpen = false;
+      }
+    }
   }
-}
