@@ -162,7 +162,7 @@ class window {
       }
     }
     if (io && wt == 4) {
-      w = 800
+      w = 800;
       fill(230);
       rect(x, y, w, 600);
       fill(200); 
@@ -174,3 +174,4 @@ class window {
       }
     }
   }
+}

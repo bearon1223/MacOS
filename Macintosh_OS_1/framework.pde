@@ -35,19 +35,19 @@ void backgrounds(float wbg) {
   if (whichbg == 7) {
     background(255, 255, 100);
   }
-  if(whichbg == 8){
+  if (whichbg == 8) {
     background(255, 0, 0);
   }
-  if(whichbg == 9){
+  if (whichbg == 9) {
     background(0, 255, 0);
   }
-  if(whichbg == 10){
+  if (whichbg == 10) {
     background(0, 0, 255);
   }
-  if(whichbg == 11){
+  if (whichbg == 11) {
     background(0);
   }
-  if(whichbg == 12){
+  if (whichbg == 12) {
     background(255);
   }
 }
@@ -133,14 +133,6 @@ void macOS() {
     bar();
     fill(0);
     appleBarLogo(20, 10, 10);
-    settings.render(isSettingsOpen);
-    settings.mousemovement();
-    appstore.render(isAppstoreOpen);
-    appstore.mousemovement();
-    flappy.render(flappyOpen);
-    flappy.mousemovement();
-    notes.render(notesOpen);
-    notes.mousemovement();
     appled.render();
     if (hasFlappy) {
       if (isMouseInside(900, 30, 50, 50) && mousePressed) {
@@ -149,29 +141,38 @@ void macOS() {
       stroke(0);
       fill(255, 255, 100);
       rect(900, 30, 50, 50);
-      if(flappyOpen){
+      if (flappyOpen) {
         flappyBirdGame(flappy);
       }
     }
-    
-      if (isMouseInside(900, 170, 50, 50) && mousePressed) {
-        notesOpen = true;
-      }
-      stroke(0);
-      fill(89, 71, 0);
-      rect(900, 170, 50, 10);
-      fill(255, 255, 100);
-      rect(900, 180, 50, 40);
-      
-    
-      if (isMouseInside(900, 100, 50, 50) && mousePressed) {
-        isSettingsOpen = true;
-      }
-      stroke(0);
-      fill(159);
-      rect(900, 100, 50, 50);
-      fill(255);
-      ellipse(925, 125, 40, 40);
+
+    if (isMouseInside(900, 170, 50, 50) && mousePressed) {
+      notesOpen = true;
+    }
+    stroke(0);
+    fill(89, 71, 0);
+    rect(900, 170, 50, 10);
+    fill(255, 255, 100);
+    rect(900, 180, 50, 40);
+
+
+    if (isMouseInside(900, 100, 50, 50) && mousePressed) {
+      isSettingsOpen = true;
+    }
+    stroke(0);
+    fill(159);
+    rect(900, 100, 50, 50);
+    fill(255);
+    ellipse(925, 125, 40, 40);
+
+    settings.render(isSettingsOpen);
+    settings.mousemovement();
+    appstore.render(isAppstoreOpen);
+    appstore.mousemovement();
+    flappy.render(flappyOpen);
+    flappy.mousemovement();
+    notes.render(notesOpen);
+    notes.mousemovement();
     macCursor();
     chosen = false;
   } else if (loggedout) {
