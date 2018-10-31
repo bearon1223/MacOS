@@ -117,8 +117,8 @@ window settings = new window(200, 100, 0, isSettingsOpen);
 window appstore = new window(200, 150, 1, isAppstoreOpen);
 window flappy = new window(200, 200, 2, flappyOpen);
 window notes = new window(200, 250, 3, notesOpen);
+textFeild notesFeild = new textFeild(notes);
 dropmenu appled = new dropmenu(0, 20, 0);
-textFeild tlog_in = new textFeild(550, 700, 100, 10);
 
 void macOS() {
   if (startup_timer < time_to_load) {
@@ -173,6 +173,11 @@ void macOS() {
     flappy.mousemovement();
     notes.render(notesOpen);
     notes.mousemovement();
+    if(notesOpen){
+      notesFeild.render(notes);
+    } else {
+      notesFeild = new textFeild(notes);
+    }
     macCursor();
     chosen = false;
   } else if (loggedout) {
