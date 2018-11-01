@@ -4,6 +4,7 @@ float startx = 0;
 float starty = 0;
 //float time_to_load = 1;
 boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false, notesOpen = false, isPaintOpen = false;
+float isPriority = 0;
 
 void startup() {
   background(0);
@@ -118,6 +119,7 @@ window appstore = new window(200, 150, 1, isAppstoreOpen);
 window flappy = new window(200, 200, 2, flappyOpen);
 window notes = new window(200, 250, 3, notesOpen);
 textFeild notesFeild = new textFeild(notes);
+textFeild login = new textFeild(450, 600, 100, 20);
 dropmenu appled = new dropmenu(0, 20, 0);
 
 void macOS() {
@@ -165,15 +167,25 @@ void macOS() {
     fill(255);
     ellipse(925, 125, 40, 40);
     noStroke();
-    settings.render(isSettingsOpen);
     settings.mousemovement();
-    appstore.render(isAppstoreOpen);
     appstore.mousemovement();
-    flappy.render(flappyOpen);
     flappy.mousemovement();
-    notes.render(notesOpen);
     notes.mousemovement();
-    if(notesOpen){
+
+    if(isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 1){
+      isPriority = 1;
+    }
+
+    if (isPriority == 1) {
+      settings.render(isSettingsOpen);
+    } else if (isPriority == 2) {
+      appstore.render(isAppstoreOpen);
+    } else if (isPriority == 3) {
+      flappy.render(flappyOpen);
+    } else if (isPriority == 4) {
+      notes.render(notesOpen);
+    }
+    if (notesOpen) {
       notesFeild.render(notes);
     } else {
       notesFeild = new textFeild(notes);
@@ -183,10 +195,11 @@ void macOS() {
   } else if (loggedout) {
     backgrounds(type);
     ellipse(500, 500, 100, 100);
-    if (isMouseInside(450, 450, 100, 100) && mousePressed) {
-      chosen = true;
-    }
-    if ((key == ENTER || key == RETURN) && chosen && keyPressed) {
+    //if (isMouseInside(450, 450, 100, 100) && mousePressed) {
+    //  chosen = true;
+    //}
+    login.render("password");
+    if ((key == ENTER || key == RETURN) && keyPressed && login.correct) {
       loggedout = false;
     }
     macCursor();

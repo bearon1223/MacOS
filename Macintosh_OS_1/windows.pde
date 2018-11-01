@@ -9,9 +9,8 @@ boolean isMouseInside(float x, float y, float w, float h) {
 }
 
 class window {
-  float x, y, wt, w, ws;
+  float x, y, wt, w, ws, h;
   boolean ioset, ioapp, ioflap = false, io = false;
-  boolean isPriority = false;
   window(float startingx, float startingy, float windowType, boolean isOpen) {
     x = startingx;
     y = startingy;
@@ -23,6 +22,7 @@ class window {
     }
     ws = 0;
     w = 400;
+    h = 600;
   }
 
   void icon() {
@@ -49,8 +49,9 @@ class window {
     io = open;
     if (io) {
       if (wt == 0) {
+        h = 300;
         fill(230);
-        rect(x, y, w, 300);
+        rect(x, y, w, h);
         fill(200);
         rect(x, y, w, 20);
         fill(255, 50, 50);
@@ -124,7 +125,8 @@ class window {
     } 
     if (io && wt == 1) {
       fill(230);
-      rect(x, y, w, 300);
+      h = 300;
+      rect(x, y, w, h);
       fill(200);
       rect(x, y, w, 20);
       fill(255, 50, 50);
@@ -139,8 +141,9 @@ class window {
     }
     if (io && wt == 2) {
       w = 700;
+      h = 600;
       fill(0, 187, 255);
-      rect(x, y, w, 600);
+      rect(x, y, w, h);
       fill(200);
       rect(x, y, w, 20);
       fill(255, 50, 50);
@@ -151,8 +154,9 @@ class window {
     }
     if (io && wt == 3) {
       w = 300;
+      h = 600;
       fill(230);
-      rect(x, y, w, 600);
+      rect(x, y, w, h);
       fill(200);
       rect(x, y, w, 20);
       fill(255, 50, 50);
@@ -163,8 +167,9 @@ class window {
     }
     if (io && wt == 4) {
       w = 800;
+      h = 600;
       fill(230);
-      rect(x, y, w, 600);
+      rect(x, y, w, h);
       fill(200); 
       rect(x, y, w, 20);
       fill(255, 50, 50); 
