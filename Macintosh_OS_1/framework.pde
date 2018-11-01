@@ -199,7 +199,7 @@ void macOS() {
     //  chosen = true;
     //}
     login.render("password");
-    if ((key == ENTER || key == RETURN) && keyPressed && login.correct) {
+    if ((key == ENTER || key == RETURN) && keyPressed/* && login.correct*/) {
       loggedout = false;
     }
     macCursor();
