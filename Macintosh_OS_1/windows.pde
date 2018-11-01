@@ -52,6 +52,7 @@ class window {
         h = 300;
         fill(230);
         rect(x, y, w, h);
+        
         fill(200);
         rect(x, y, w, 20);
         fill(255, 50, 50);

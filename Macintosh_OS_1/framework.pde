@@ -171,47 +171,49 @@ void macOS() {
     flappy.mousemovement();
     notes.mousemovement();
 
-    if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 1) {
+    if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
+      isPriority = 0;
+    }
+    if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 1) {
       isPriority = 1;
     }
-    if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 2) {
+    if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 2) {
       isPriority = 2;
     }
-    if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 3) {
+    if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 3) {
       isPriority = 3;
     }
-    if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 4) {
-      isPriority = 4;
+
+
+    if (isPriority != 0 && isSettingsOpen) {
+      settings.render(isSettingsOpen);
+    } 
+    if (isPriority != 1 && isAppstoreOpen) {
+      appstore.render(isAppstoreOpen);
+    } 
+    if (isPriority != 2 && flappyOpen) {
+      flappy.render(flappyOpen);
+    } 
+    if (isPriority != 3 && notesOpen) {
+      notes.render(notesOpen);
     }
     
-    if (isPriority != 1) {
-      settings.render(isSettingsOpen);
-    } 
-    if (isPriority != 2) {
-      appstore.render(isAppstoreOpen);
-    } 
-    if (isPriority != 3) {
-      flappy.render(flappyOpen);
-    } 
-    if (isPriority != 4) {
-      notes.render(notesOpen);
-    }
-
-    if (isPriority == 1) {
-      settings.render(isSettingsOpen);
-    } else if (isPriority == 2) {
-      appstore.render(isAppstoreOpen);
-    } else if (isPriority == 3) {
-      flappy.render(flappyOpen);
-    } else if (isPriority == 4) {
-      notes.render(notesOpen);
-    }
-
     if (notesOpen) {
       notesFeild.render(notes);
     } else {
       notesFeild = new textFeild(notes);
     }
+
+    if (isPriority == 0 && isSettingsOpen) {
+      settings.render(isSettingsOpen);
+    } else if (isPriority == 1 && isAppstoreOpen) {
+      appstore.render(isAppstoreOpen);
+    } else if (isPriority == 2 && flappyOpen) {
+      flappy.render(flappyOpen);
+    } else if (isPriority == 3 && notesOpen) {
+      notes.render(notesOpen);
+    }
+
     appled.render();
     macCursor();
     chosen = false;
