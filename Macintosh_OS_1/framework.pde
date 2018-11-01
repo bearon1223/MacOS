@@ -135,7 +135,6 @@ void macOS() {
     bar();
     fill(0);
     appleBarLogo(20, 10, 10);
-    appled.render();
     if (hasFlappy) {
       if (isMouseInside(900, 30, 50, 50) && mousePressed) {
         flappyOpen = true;
@@ -172,8 +171,30 @@ void macOS() {
     flappy.mousemovement();
     notes.mousemovement();
 
-    if(isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 1){
+    if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 1) {
       isPriority = 1;
+    }
+    if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 2) {
+      isPriority = 2;
+    }
+    if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 3) {
+      isPriority = 3;
+    }
+    if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 4) {
+      isPriority = 4;
+    }
+    
+    if (isPriority != 1) {
+      settings.render(isSettingsOpen);
+    } 
+    if (isPriority != 2) {
+      appstore.render(isAppstoreOpen);
+    } 
+    if (isPriority != 3) {
+      flappy.render(flappyOpen);
+    } 
+    if (isPriority != 4) {
+      notes.render(notesOpen);
     }
 
     if (isPriority == 1) {
@@ -185,11 +206,13 @@ void macOS() {
     } else if (isPriority == 4) {
       notes.render(notesOpen);
     }
+
     if (notesOpen) {
       notesFeild.render(notes);
     } else {
       notesFeild = new textFeild(notes);
     }
+    appled.render();
     macCursor();
     chosen = false;
   } else if (loggedout) {
@@ -198,8 +221,8 @@ void macOS() {
     //if (isMouseInside(450, 450, 100, 100) && mousePressed) {
     //  chosen = true;
     //}
-    login.render("password");
-    if ((key == ENTER || key == RETURN) && keyPressed/* && login.correct*/) {
+    login.render();
+    if ((key == ENTER || key == RETURN) && keyPressed) {
       loggedout = false;
     }
     macCursor();
