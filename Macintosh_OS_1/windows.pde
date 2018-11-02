@@ -43,6 +43,9 @@ class window {
       x = pmx - w / 2;
       y = pmy - 10;
     }
+        if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
+      isPriority = wt;
+    }
   }
 
   void render(boolean open) {

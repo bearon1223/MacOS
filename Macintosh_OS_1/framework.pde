@@ -166,23 +166,19 @@ void macOS() {
     fill(255);
     ellipse(925, 125, 40, 40);
     noStroke();
-    settings.mousemovement();
-    appstore.mousemovement();
-    flappy.mousemovement();
-    notes.mousemovement();
 
-    if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
-      isPriority = 0;
-    }
-    if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 1) {
-      isPriority = 1;
-    }
-    if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 2) {
-      isPriority = 2;
-    }
-    if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 3) {
-      isPriority = 3;
-    }
+    //if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
+    //  isPriority = 0;
+    //}
+    //if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 1) {
+    //  isPriority = 1;
+    //}
+    //if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 2) {
+    //  isPriority = 2;
+    //}
+    //if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 3) {
+    //  isPriority = 3;
+    //}
 
 
     if (isPriority != 0 && isSettingsOpen) {
@@ -197,12 +193,6 @@ void macOS() {
     if (isPriority != 3 && notesOpen) {
       notes.render(notesOpen);
     }
-    
-    if (notesOpen) {
-      notesFeild.render(notes);
-    } else {
-      notesFeild = new textFeild(notes);
-    }
 
     if (isPriority == 0 && isSettingsOpen) {
       settings.render(isSettingsOpen);
@@ -213,6 +203,17 @@ void macOS() {
     } else if (isPriority == 3 && notesOpen) {
       notes.render(notesOpen);
     }
+    
+    if (notesOpen) {
+      notesFeild.render(notes);
+    } else {
+      notesFeild = new textFeild(notes);
+    }
+    
+    settings.mousemovement();
+    appstore.mousemovement();
+    flappy.mousemovement();
+    notes.mousemovement();
 
     appled.render();
     macCursor();

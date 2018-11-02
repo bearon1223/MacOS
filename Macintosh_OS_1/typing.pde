@@ -62,8 +62,6 @@ class textFeild {
     if (keyPressed && ((!pressed) || (textTimer > 50 && keyCode != SHIFT)) && keyCode != SHIFT) {
       if (trim(result) != correctText) {
         result = result + key;
-      } else {
-        result = result;
       }
       pressed = true;
     } else if (!keyPressed && pressed) {
@@ -71,7 +69,7 @@ class textFeild {
       textTimer = 0;
     } else if (keyPressed && keyCode == SHIFT) {
       textTimer = 0;
-    } else if (keyPressed && (keyCode == BACKSPACE || keyCode == DELETE)) {
+    } else if (keyPressed && (key == BACKSPACE || key == DELETE)) {
       result = "";
     } else if (keyPressed) {
       textTimer++;
