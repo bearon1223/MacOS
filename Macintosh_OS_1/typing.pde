@@ -69,7 +69,7 @@ class textFeild {
       textTimer = 0;
     } else if (keyPressed && keyCode == SHIFT) {
       textTimer = 0;
-    } else if (keyPressed && (keyCode == BACKSPACE || keyCode == DELETE)) {
+    } else if (keyPressed && (key == BACKSPACE || key == DELETE)) {
       result = "";
     } else if (keyPressed) {
       textTimer++;
