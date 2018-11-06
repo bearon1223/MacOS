@@ -43,7 +43,6 @@ class window {
       x = pmx - w / 2;
       y = pmy - 10;
     }
-<<<<<<< HEAD
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 1) {
       isAppstoreOpen = false;
     }
@@ -58,10 +57,9 @@ class window {
     }
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 4) {
       isPaintOpen = false;
-=======
-        if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
-      isPriority = wt;
->>>>>>> 04921249f9831b33cf3ab442d75f02d15f36ecde
+      if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
+        isPriority = wt;
+      }
     }
   }
 
