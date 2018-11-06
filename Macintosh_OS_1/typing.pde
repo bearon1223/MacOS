@@ -62,8 +62,6 @@ class textFeild {
     if (keyPressed && ((!pressed) || (textTimer > 50 && keyCode != SHIFT)) && keyCode != SHIFT) {
       if (trim(result) != correctText) {
         result = result + key;
-      } else {
-        result = result;
       }
       pressed = true;
     } else if (!keyPressed && pressed) {

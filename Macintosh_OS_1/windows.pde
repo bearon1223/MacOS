@@ -39,9 +39,24 @@ class window {
   }
 
   void mousemovement() {
-    if (pmx > x && pmx < x + w && pmy > y && pmy < y + 20 && mousePressed) {
+    if (pmx > x + 5 + 16 && pmx < x + w && pmy > y && pmy < y + 20 && mousePressed) {
       x = pmx - w / 2;
       y = pmy - 10;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 1) {
+      isAppstoreOpen = false;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 0) {
+      isSettingsOpen = false;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 2) {
+      flappyOpen = false;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 3) {
+      notesOpen = false;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 4) {
+      isPaintOpen = false;
     }
   }
 
@@ -52,14 +67,12 @@ class window {
         h = 300;
         fill(230);
         rect(x, y, w, h);
-        
+
         fill(200);
         rect(x, y, w, 20);
         fill(255, 50, 50);
         ellipse(x + 10, y + 10, 8, 8);
-        if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
-          isSettingsOpen = false;
-        }
+
         if (ws == 0) {
           fill(0, 187, 255);
           rect(x + 10, y + 30, 20, 20);
@@ -132,9 +145,7 @@ class window {
       rect(x, y, w, 20);
       fill(255, 50, 50);
       ellipse(x + 10, y + 10, 8, 8);
-      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
-        isAppstoreOpen = false;
-      }
+
       rect(x + 30, y + 20, 20, 20);
       if (isMouseInside(x + 30, y + 20, 20, 20) && wt == 1 && mousePressed) {
         hasFlappy = true;
@@ -149,9 +160,6 @@ class window {
       rect(x, y, w, 20);
       fill(255, 50, 50);
       ellipse(x + 10, y + 10, 8, 8);
-      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
-        flappyOpen = false;
-      }
     }
     if (io && wt == 3) {
       w = 300;
@@ -162,9 +170,6 @@ class window {
       rect(x, y, w, 20);
       fill(255, 50, 50);
       ellipse(x + 10, y + 10, 8, 8);
-      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
-        notesOpen = false;
-      }
     }
     if (io && wt == 4) {
       w = 800;
@@ -175,9 +180,6 @@ class window {
       rect(x, y, w, 20);
       fill(255, 50, 50); 
       ellipse(x + 10, y + 10, 8, 8);
-      if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed) {
-        isPaintOpen = false;
-      }
     }
   }
 }

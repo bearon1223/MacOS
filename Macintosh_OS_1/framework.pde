@@ -166,10 +166,6 @@ void macOS() {
     fill(255);
     ellipse(925, 125, 40, 40);
     noStroke();
-    settings.mousemovement();
-    appstore.mousemovement();
-    flappy.mousemovement();
-    notes.mousemovement();
 
     if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
       isPriority = 0;
@@ -184,6 +180,10 @@ void macOS() {
       isPriority = 3;
     }
 
+    settings.mousemovement();
+    appstore.mousemovement();
+    flappy.mousemovement();
+    notes.mousemovement();
 
     if (isPriority != 0 && isSettingsOpen) {
       settings.render(isSettingsOpen);
@@ -197,12 +197,6 @@ void macOS() {
     if (isPriority != 3 && notesOpen) {
       notes.render(notesOpen);
     }
-    
-    if (notesOpen) {
-      notesFeild.render(notes);
-    } else {
-      notesFeild = new textFeild(notes);
-    }
 
     if (isPriority == 0 && isSettingsOpen) {
       settings.render(isSettingsOpen);
@@ -214,15 +208,18 @@ void macOS() {
       notes.render(notesOpen);
     }
 
+    if (notesOpen) {
+      notesFeild.render(notes);
+    } else {
+      notesFeild = new textFeild(notes);
+    }
+
     appled.render();
     macCursor();
     chosen = false;
   } else if (loggedout) {
     backgrounds(type);
     ellipse(500, 500, 100, 100);
-    //if (isMouseInside(450, 450, 100, 100) && mousePressed) {
-    //  chosen = true;
-    //}
     login.render();
     if ((key == ENTER || key == RETURN) && keyPressed) {
       loggedout = false;
