@@ -5,13 +5,24 @@ float mx = 0;
 float my = 0;
 float pmx = 0;
 float pmy = 0;
+PImage Background1;
+PImage Background2;
+PImage Background3;
+PImage Background4;
+PImage Background5;
 static final String CONFIG_FILE = "config.dat";
 
 void setup() {
   size(1000, 1000);
   appleW = loadImage("white apple logo.jpg");
-  surface.setTitle("macOS me");
+  surface.setTitle("OSX me");
   load();
+  Background1 = loadImage("imagebackground1.jpeg");
+  Background2 = loadImage("imagebackground2.jpg");
+  Background3 = loadImage("imagebackground3.jpg");
+  Background4 = loadImage("imagebackground4.jpg");
+  frameRate(100);
+  //Background5 = loadImage("imagebackground5.jp2");
 }
 
 void save() {

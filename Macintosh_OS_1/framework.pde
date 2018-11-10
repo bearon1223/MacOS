@@ -3,7 +3,7 @@ float time_to_load = random(500, 1020), time_to_shutdown = random(500, 1020);
 float startx = 0;
 float starty = 0;
 //float time_to_load = 1;
-boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false, notesOpen = false, isPaintOpen = false;
+boolean dropopen = false, isSettingsOpen = false, shuttingdown = false, isAppstoreOpen = false, hasFlappy = true, flappyOpen = false, notesOpen = false, isPaintOpen = false, webOpen = false;
 float isPriority = 0;
 
 void startup() {
@@ -51,6 +51,21 @@ void backgrounds(float wbg) {
   if (whichbg == 12) {
     background(255);
   }
+  if (whichbg == 13) {
+    image(Background1, 0, 20, 1000, 980);
+  }
+  if (whichbg == 14) {
+    image(Background2, 0, 20, 1000, 980);
+  }
+  if (whichbg == 15) {
+    image(Background3, 0, 20, 1000, 980);
+  }
+  if (whichbg == 16) {
+    image(Background4, 0, 20, 1000, 980);
+  }
+  //if (whichbg == 17) {
+  //  image(Background5, 0, 20, 1000, 980);
+  //}
 }
 
 void macCursor() {
@@ -93,7 +108,7 @@ void bar() {
     AMPM = "PM";
   } else {
     hours = hour();
-    AMPM = "PM";
+    AMPM = "AM";
   }
   if (second() < 10) {
     seconds = "0" + str(second());
@@ -118,6 +133,8 @@ window settings = new window(200, 100, 0, isSettingsOpen);
 window appstore = new window(200, 150, 1, isAppstoreOpen);
 window flappy = new window(200, 200, 2, flappyOpen);
 window notes = new window(200, 250, 3, notesOpen);
+window webBrowser = new window(200, 300, 4, webOpen);
+
 textFeild notesFeild = new textFeild(notes);
 textFeild login = new textFeild(450, 600, 100, 20);
 dropmenu appled = new dropmenu(0, 20, 0);
@@ -166,6 +183,16 @@ void macOS() {
     fill(255);
     ellipse(925, 125, 40, 40);
     noStroke();
+    
+    if (isMouseInside(900, 240, 50, 50) && mousePressed) {
+      webOpen = true;
+    }
+    stroke(0);
+    fill(150);
+    rect(900, 240, 50, 50);
+    fill(100, 100, 255);
+    ellipse(925, 265, 40, 40);
+    noStroke();
 
     //if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
     //  isPriority = 0;
@@ -197,6 +224,9 @@ void macOS() {
     if (isPriority != 3 && notesOpen) {
       notes.render(notesOpen);
     }
+    if (isPriority != 4 && webOpen) {
+      webBrowser.render(webOpen);
+    }
 
     if (isPriority == 0 && isSettingsOpen) {
       settings.render(isSettingsOpen);
@@ -206,18 +236,21 @@ void macOS() {
       flappy.render(flappyOpen);
     } else if (isPriority == 3 && notesOpen) {
       notes.render(notesOpen);
+    } else if (isPriority == 4 && webOpen) {
+      webBrowser.render(webOpen);
     }
-    
+
     if (notesOpen) {
       notesFeild.render(notes);
     } else {
       notesFeild = new textFeild(notes);
     }
-    
+
     settings.mousemovement();
     appstore.mousemovement();
     flappy.mousemovement();
     notes.mousemovement();
+    webBrowser.mousemovement();
 
     if (notesOpen) {
       notesFeild.render(notes);

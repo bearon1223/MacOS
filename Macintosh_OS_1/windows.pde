@@ -10,7 +10,7 @@ boolean isMouseInside(float x, float y, float w, float h) {
 
 class window {
   float x, y, wt, w, ws, h;
-  boolean ioset, ioapp, ioflap = false, io = false;
+  boolean ioset, ioapp, ioflap = false, io = false, search = false;
   window(float startingx, float startingy, float windowType, boolean isOpen) {
     x = startingx;
     y = startingy;
@@ -137,6 +137,36 @@ class window {
           if (isMouseInside(x + 310, y + 60, 20, 20) && mousePressed) {
             type = 12;
           }
+
+          fill(255);
+          rect(x + 340, y + 60, 20, 20);
+          if (isMouseInside(x + 340, y + 60, 20, 20) && mousePressed) {
+            type = 13;
+          }
+
+          fill(255);
+          rect(x + 370, y + 60, 20, 20);
+          if (isMouseInside(x + 370, y + 60, 20, 20) && mousePressed) {
+            type = 14;
+          }
+
+          fill(255);
+          rect(x + 10, y + 90, 20, 20);
+          if (isMouseInside(x + 10, y + 90, 20, 20) && mousePressed) {
+            type = 15;
+          }
+
+          fill(255);
+          rect(x + 30, y + 90, 20, 20);
+          if (isMouseInside(x + 30, y + 90, 20, 20) && mousePressed) {
+            type = 16;
+          }
+
+          //fill(255);
+          //rect(x + 160, y + 90, 20, 20);
+          //if (isMouseInside(x + 310, y + 60, 20, 20) && mousePressed) {
+          //  type = 17;
+          //}
         }
       }
     } 
@@ -183,6 +213,20 @@ class window {
       rect(x, y, w, 20);
       fill(255, 50, 50); 
       ellipse(x + 10, y + 10, 8, 8);
+
+      textAlign(CENTER, CENTER);
+      textSize(50);
+      text("Me Search", x + w/2, y + h / 2 - 20);
+      if (isMouseInside(x+50, y+ h/2 + 30, 700, 50) && mousePressed && !search) {
+        search = true;
+      }
+      if (!search) {
+        fill(240);
+        rect(x + 50, y + h / 2 + 30, 700, 50);
+      }
+      if (search) {
+        
+      }
     }
   }
 }
