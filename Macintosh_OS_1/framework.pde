@@ -184,7 +184,7 @@ void macOS() {
     fill(255);
     ellipse(925, 125, 40, 40);
     noStroke();
-    
+
     if (isMouseInside(900, 240, 50, 50) && mousePressed) {
       webOpen = true;
     }
@@ -231,13 +231,17 @@ void macOS() {
 
     if (isPriority == 0 && isSettingsOpen) {
       settings.render(isSettingsOpen);
-    } else if (isPriority == 1 && isAppstoreOpen) {
+    }  
+    if (isPriority == 1 && isAppstoreOpen) {
       appstore.render(isAppstoreOpen);
-    } else if (isPriority == 2 && flappyOpen) {
+    }  
+    if (isPriority == 2 && flappyOpen) {
       flappy.render(flappyOpen);
-    } else if (isPriority == 3 && notesOpen) {
+    }  
+    if (isPriority == 3 && notesOpen) {
       notes.render(notesOpen);
-    } else if (isPriority == 4 && webOpen) {
+    }  
+    if (isPriority == 4 && webOpen) {
       webBrowser.render(webOpen);
     }
 

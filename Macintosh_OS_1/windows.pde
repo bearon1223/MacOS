@@ -43,11 +43,11 @@ class window {
       x = pmx - w / 2;
       y = pmy - 10;
     }
-    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 1) {
-      isAppstoreOpen = false;
-    }
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 0) {
       isSettingsOpen = false;
+    }
+    if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 1) {
+      isAppstoreOpen = false;
     }
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 2) {
       flappyOpen = false;
@@ -57,11 +57,12 @@ class window {
     }
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 4) {
       webOpen = false;
-      if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
-        isPriority = wt;
-      }
+    }
+    if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
+      isPriority = wt;
     }
   }
+
 
   void render(boolean open) {
     io = open;
