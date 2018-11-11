@@ -56,7 +56,7 @@ class window {
       notesOpen = false;
     }
     if (isMouseInside(x + 5, y + 5, 16, 16) && mousePressed && wt == 4) {
-      isPaintOpen = false;
+      webOpen = false;
       if (isMouseInside(x, y, w, h) && mousePressed && isPriority != wt) {
         isPriority = wt;
       }
@@ -111,7 +111,6 @@ class window {
           if (isMouseInside(x + 160, y + 60, 20, 20) && mousePressed) {
             type = 7;
           }
-          //
           fill(255, 0, 0);
           rect(x + 190, y + 60, 20, 20);
           if (isMouseInside(x + 190, y + 60, 20, 20) && mousePressed) {
@@ -137,7 +136,6 @@ class window {
           if (isMouseInside(x + 310, y + 60, 20, 20) && mousePressed) {
             type = 12;
           }
-
           fill(255);
           rect(x + 340, y + 60, 20, 20);
           if (isMouseInside(x + 340, y + 60, 20, 20) && mousePressed) {
@@ -149,24 +147,16 @@ class window {
           if (isMouseInside(x + 370, y + 60, 20, 20) && mousePressed) {
             type = 14;
           }
-
           fill(255);
           rect(x + 10, y + 90, 20, 20);
           if (isMouseInside(x + 10, y + 90, 20, 20) && mousePressed) {
             type = 15;
           }
-
           fill(255);
           rect(x + 30, y + 90, 20, 20);
           if (isMouseInside(x + 30, y + 90, 20, 20) && mousePressed) {
             type = 16;
           }
-
-          //fill(255);
-          //rect(x + 160, y + 90, 20, 20);
-          //if (isMouseInside(x + 310, y + 60, 20, 20) && mousePressed) {
-          //  type = 17;
-          //}
         }
       }
     } 
@@ -216,7 +206,10 @@ class window {
 
       textAlign(CENTER, CENTER);
       textSize(50);
-      text("Me Search", x + w/2, y + h / 2 - 20);
+      if (!search) {
+        fill(0);
+        text("Me Search", x + w/2, y + h / 2 - 20);
+      }
       if (isMouseInside(x+50, y+ h/2 + 30, 700, 50) && mousePressed && !search) {
         search = true;
       }
@@ -225,8 +218,10 @@ class window {
         rect(x + 50, y + h / 2 + 30, 700, 50);
       }
       if (search) {
-        
+        fill(0);
+        text("Error: 404 Page not found", x + 400, y + 300);
       }
+      textSize(12);
     }
   }
 }

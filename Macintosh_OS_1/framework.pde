@@ -103,6 +103,7 @@ void bar() {
   float hours;
   String minutes;
   String seconds;
+  textSize(12);
   if (hour() > 12) {
     hours = hour() - 12;
     AMPM = "PM";
