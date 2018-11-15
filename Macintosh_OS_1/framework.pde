@@ -224,6 +224,11 @@ void macOS() {
     } 
     if (isPriority != 3 && notesOpen) {
       notes.render(notesOpen);
+      if (notesOpen) {
+        notesFeild.render(notes);
+      } else {
+        notesFeild = new textFeild(notes);
+      }
     }
     if (isPriority != 4 && webOpen) {
       webBrowser.render(webOpen);
@@ -240,16 +245,16 @@ void macOS() {
     }  
     if (isPriority == 3 && notesOpen) {
       notes.render(notesOpen);
+      if (notesOpen) {
+        notesFeild.render(notes);
+      } else {
+        notesFeild = new textFeild(notes);
+      }
     }  
     if (isPriority == 4 && webOpen) {
       webBrowser.render(webOpen);
     }
 
-    if (notesOpen) {
-      notesFeild.render(notes);
-    } else {
-      notesFeild = new textFeild(notes);
-    }
 
     settings.mousemovement();
     appstore.mousemovement();
