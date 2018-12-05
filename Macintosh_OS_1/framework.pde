@@ -140,6 +140,8 @@ textFeild notesFeild = new textFeild(notes);
 textFeild login = new textFeild(450, 600, 100, 20);
 dropmenu appled = new dropmenu(0, 20, 0);
 
+web myweb = new web();
+
 void macOS() {
   if (startup_timer < time_to_load) {
     startup();
@@ -268,6 +270,10 @@ void macOS() {
       notesFeild = new textFeild(notes);
     }
 
+    if (webOpen && webBrowser.search) {
+      myweb.searchEngine(webBrowser);
+    }
+    
     appled.render();
     macCursor();
     chosen = false;

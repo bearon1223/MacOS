@@ -222,8 +222,8 @@ class window {
         fill(0);
         textSize(15);
         textAlign(CORNER, CORNER);
-        text("gears3Review.com", x + 10, y + 40);
-        text("images for gear s3", x + 10, y + 100);
+        //text("gears3Review.com", x + 10, y + 40);
+        //text("images for gear s3", x + 10, y + 100);
       }
       textSize(12);
     }
