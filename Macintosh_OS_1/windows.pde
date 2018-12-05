@@ -220,7 +220,10 @@ class window {
       }
       if (search) {
         fill(0);
-        text("Error: 404 Page not found", x + 400, y + 300);
+        textSize(15);
+        textAlign(CORNER, CORNER);
+        text("gears3Review.com", x + 10, y + 40);
+        text("images for gear s3", x + 10, y + 100);
       }
       textSize(12);
     }
