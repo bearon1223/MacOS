@@ -197,19 +197,6 @@ void macOS() {
     ellipse(925, 265, 40, 40);
     noStroke();
 
-    //if (isMouseInside(settings.x, settings.y, settings.w, settings.h) && mousePressed && isPriority != 0) {
-    //  isPriority = 0;
-    //}
-    //if (isMouseInside(appstore.x, appstore.y, appstore.w, appstore.h) && mousePressed && isPriority != 1) {
-    //  isPriority = 1;
-    //}
-    //if (isMouseInside(flappy.x, flappy.y, flappy.w, flappy.h) && mousePressed && isPriority != 2) {
-    //  isPriority = 2;
-    //}
-    //if (isMouseInside(notes.x, notes.y, notes.w, notes.h) && mousePressed && isPriority != 3) {
-    //  isPriority = 3;
-    //}
-
     settings.mousemovement();
     appstore.mousemovement();
     flappy.mousemovement();
@@ -234,6 +221,15 @@ void macOS() {
     }
     if (isPriority != 4 && webOpen) {
       webBrowser.render(webOpen);
+    }
+    if (webOpen && webBrowser.search && isPriority != 4) {
+      myweb.searchEngine(webBrowser);
+    }
+    
+    if (notesOpen && isPriority != 3) {
+      notesFeild.render(notes);
+    } else if(!notesOpen){
+      notesFeild = new textFeild(notes);
     }
 
     if (isPriority == 0 && isSettingsOpen) {
@@ -264,13 +260,13 @@ void macOS() {
     notes.mousemovement();
     webBrowser.mousemovement();
 
-    if (notesOpen) {
+    if (notesOpen && isPriority == 3) {
       notesFeild.render(notes);
-    } else {
+    } else if(!notesOpen){
       notesFeild = new textFeild(notes);
     }
 
-    if (webOpen && webBrowser.search) {
+    if (webOpen && webBrowser.search && isPriority == 4) {
       myweb.searchEngine(webBrowser);
     }
     
